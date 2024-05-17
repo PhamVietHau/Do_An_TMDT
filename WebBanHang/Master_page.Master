@@ -1,0 +1,131 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Master_page.master.cs" Inherits="WebBanHang.Master_page" %>
+
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="style/style.css" rel="Stylesheet" type="text/css" />
+    <link href="style/header.css" rel="Stylesheet" type="text/css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="icon" type="image/x-icon" href="https://goodallvinyl.com/cdn/shop/products/AC_Black.png?v=1663807431&width=1800">
+
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <form id="form1" runat="server">
+
+        <div id="header">
+            <a href="Default.aspx">
+                <img src="/img/logo_shop.png" alt=""></a>
+            <ul class="flex">
+                <li><a class="btn_link" href="Default.aspx">TRANG CHỦ</a></li>
+                <li>
+                    <a href="TimKiem.aspx?ml=L01">ÁO</a></li>
+                <li>
+                    <a href="TimKiem.aspx?ml=L02">QUẦN</a></li>
+                <li>
+                    <div class="search_bar">
+                        <asp:TextBox ID="input" runat="server"></asp:TextBox>
+                        <asp:Button ID="timkiem" runat="server" Text="Tìm" OnClick="timkiem_Click" />
+                    </div>
+                </li>
+                <li>
+                    <a href="GioHang.aspx"><i class="fa-solid fa-cart-shopping"></i>Giỏ Hàng</a>
+                </li>
+
+                <asp:PlaceHolder ID="Not_Login" runat="server">
+                    <li class="flex">
+                        <a href="#" onclick="document.getElementById('dn').style.display='block'"><i class="fa-regular fa-user"></i>Đăng Nhập</a>
+                        <a href="#" onclick="document.getElementById('dk').style.display='block'"><i class="fa-solid fa-user-plus"></i>Đăng Ký</a>
+                    </li>
+
+                </asp:PlaceHolder>
+                <asp:placeholder id="Logged" runat="server" visible="false">
+                                <li><a href="#"><i class="fa-regular fa-user"></i> Xin chào <asp:Label ID="user" runat="server" Text="Label"></asp:Label></a></li>
+                                <li><asp:LinkButton ID="LinkButton1" runat="server"  OnClick="btnLogout_Click">Đăng Xuất</asp:LinkButton></li>
+                    
+
+                         </asp:placeholder>    
+
+
+            </ul>
+        </div>
+        <%--ĐĂNG NHẬP--%>
+        <div id="dn" class="form_dangnhap ">
+            <asp:Login ID="Login1" OnAuthenticate="Login1_Authenticate" CssClass="dn_content" runat="server">
+                <LayoutTemplate>
+                    <i class="fa-solid fa-xmark close" onclick="document.getElementById('dn').style.display='none'"></i>
+                    <h3>ĐĂNG NHẬP</h3>
+                    <div class="nhap_input">
+
+                        <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Tên Đăng Nhập:</asp:Label><br />
+                        <asp:TextBox ID="UserName" CssClass="username" placeholder="Nhập tên đăng nhập" runat="server"></asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="UserNameRequired" runat="server" ControlToValidate="UserName" ErrorMessage="Vui lòng nhập tên đăng nhập*" ForeColor="Red" ToolTip="User Name is required." ValidationGroup="ctl00$Login1"></asp:RequiredFieldValidator><br />
+
+                        <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Mật Khẩu:</asp:Label><br />
+                        <asp:TextBox ID="Password" CssClass="username" runat="server" TextMode="Password" placeholder="Nhập mật khẩu"> </asp:TextBox><br />
+                        <asp:RequiredFieldValidator ID="PasswordRequired" runat="server" ControlToValidate="Password" ErrorMessage="Vui lòng nhập Mật khẩu*" ForeColor="Red" ToolTip="Password is required." ValidationGroup="ctl00$Login1"></asp:RequiredFieldValidator><br />
+                        <asp:Literal ID="FailureText" runat="server" EnableViewState="False"></asp:Literal>
+                        <asp:Button ID="LoginButton" CssClass="btn_dn" runat="server" CommandName="Login" Text="Đăng Nhập" ValidationGroup="ctl00$Login1" />
+                       
+                                   
+                    </div>
+                    
+                </LayoutTemplate>
+            </asp:Login>
+            
+        </div>
+        <%--ĐĂNG KÝ--%>
+        <div id="dk" class="form_dangnhap ">
+            <div class="dn_content" runat="server">
+                <i class="fa-solid fa-xmark close" onclick="document.getElementById('dk').style.display='none'"></i>
+                <h3>ĐĂNG KÝ</h3>
+                <div class="nhap_input">
+                    <asp:Label ID="UserNameLabel" runat="server" AssociatedControlID="UserName">Tên Đăng Nhập:</asp:Label><br />
+                    <asp:TextBox ID="UserName" CssClass="username" placeholder="Nhập tên đăng nhập" runat="server"></asp:TextBox><br />
+                    <asp:Label ID="PasswordLabel" runat="server" AssociatedControlID="Password">Mật Khẩu:</asp:Label><br />
+                    <asp:TextBox ID="Password" CssClass="username" runat="server" TextMode="Password" placeholder="Nhập mật khẩu"> </asp:TextBox><br />
+                    <asp:Label ID="Label1" runat="server" AssociatedControlID="Password">Nhập Lại Mật Khẩu:</asp:Label><br />
+                    <asp:TextBox ID="Repeat_Password" CssClass="username" runat="server" TextMode="Password" placeholder="Nhập mật khẩu"> </asp:TextBox><br />
+                    <asp:CompareValidator ID="CompareValidator1" runat="server" ErrorMessage="Mật khẩu xác nhận sai!"
+                        ControlToCompare="Password"
+                        ControlToValidate="Repeat_Password"
+                        Display="Dynamic"></asp:CompareValidator>
+                    <asp:Label ID="lb_dk" runat="server" Text=""></asp:Label>
+                    <asp:Button ID="RegistButton" CssClass="btn_dk" runat="server" OnClick="RegistButton_Click" Text="Đăng Ký" />
+
+                </div>
+            </div>
+        </div>
+       
+
+        <%--=========================--%>
+        <div>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+
+        <footer>
+            <div class="foot">
+                <p>Copyright @ASIN 2023</p>
+            </div>
+        </footer>
+
+
+        <script>
+           
+
+
+        </script>
+
+
+
+    </form>
+</body>
+</html>

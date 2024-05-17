@@ -1,0 +1,85 @@
+﻿*{
+    margin: 0;
+}
+
+.flex {
+    display: flex;
+    gap: 20px;
+}
+
+#header {
+    width: 100%;
+    position: absolute fixed;
+    z-index: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+
+
+    #header ul {
+        margin: 0;
+        justify-content: center;
+        height: 100%;
+    }
+
+
+        #header ul li {
+            list-style-type: none;
+            height: 100%;
+            box-sizing: border-box;
+            height: 100px;
+        }
+
+            #header ul li > a {
+                display: block;
+                text-decoration: none;
+                padding: 0 20px;
+                color: rgb(99, 98, 98);
+                font-weight: 700;
+                line-height: 100px;
+                height: 100%;
+            }
+
+                #header ul a:hover{
+                    color: #000;
+                }
+
+i {
+    margin-right: 5px;
+}
+
+#header ul .search_bar {
+    line-height: 100px;
+}
+
+#header .search_bar #input, #timkiem {
+    background-color: #fafafa;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+}
+
+#header img {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: 50px;
+}
+#timkiem{
+    cursor: pointer;
+}
+#header .search_bar #input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+#input:focus {
+        outline: none;
+    }
+
+
+
+.sub_nav{
+    position: absolute;
+    display: block;
+
+}
+

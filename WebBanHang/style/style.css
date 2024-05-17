@@ -1,0 +1,114 @@
+﻿* {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+ a:hover {
+    color: #000;
+}
+
+#form1{
+    position: relative;
+    min-height: 100vh;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 5em;
+    width: 100%;
+    background-color: black;
+}
+
+footer .foot p {
+    text-align: center;
+    color: whitesmoke;
+    line-height: 5em;
+}
+
+.username {
+    border: none;
+    border-bottom: 1px solid black;
+    padding: 10px 5px ;
+}
+
+.close {
+    float: right;
+    padding: 15px;
+}
+
+.btn_dn {
+    background-color: forestgreen;
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+.username[type=text], .username[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.close:hover,
+.close:focus {
+    color: red;
+    cursor: pointer;
+}
+
+.form_dangnhap {
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0); 
+    background-color: rgba(0,0,0,0.4);
+    padding-top: 60px;
+}
+
+.dn_content {
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; 
+    border: 1px solid #888;
+    width: 50%;
+   
+}
+
+.nhap_input{
+    width:100%;
+    padding:0 10em;
+    box-sizing: border-box;
+}
+.dn_content h3{
+    padding: 2em;
+}
+.btn_dk {
+    color: white;
+    padding: 14px 20px;
+    margin: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    padding: 15px 0;
+    background-color: darkorange;
+}
+
+.ds_none {
+    display: none;
+}
+
+.ds_block{
+    display: block; 
+}
